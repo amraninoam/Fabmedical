@@ -56,6 +56,11 @@ jobs:
           ${{ env.containerRegistry }}/${{ env.imageRepository }}:${{ env.tag }}
           ${{ env.containerRegistry }}/${{ env.imageRepository }}:latest
       
+    - name: Login via Az module
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+        enable-AzPSSession: true 
     - name: Set cluster
       run: az aks get-credentials -a --name fabmedical-475098 --resource-group fabmedical-475098
     - name: Deploy to AKS
