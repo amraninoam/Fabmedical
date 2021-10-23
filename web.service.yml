@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"web"},"name":"web","namespace":"default"},"spec":{"ports":[{"name":"web-traffic","port":80,"protocol":"TCP","targetPort":3000}],"selector":{"app":"web"},"sessionAffinity":"None","type":"LoadBalancer"}}
+  creationTimestamp: "2021-10-23T08:17:38Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: web
+  name: web
+  namespace: default
+  resourceVersion: "11707"
+  selfLink: /api/v1/namespaces/default/services/web
+  uid: 227b9b72-3b34-4847-8723-167afc55c275
+spec:
+  clusterIP: 10.0.75.223
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: web-traffic
+    nodePort: 30622
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: web
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 20.106.149.138
