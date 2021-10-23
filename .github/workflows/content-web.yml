@@ -60,7 +60,8 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-        enable-AzPSSession: true 
+        enable-AzPSSession: true
+        allow-no-subscriptions: true
     - name: Set cluster
       run: az aks get-credentials -a --name fabmedical-475098 --resource-group fabmedical-475098
     - name: Deploy to AKS
